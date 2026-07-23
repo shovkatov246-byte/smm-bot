@@ -22,6 +22,11 @@ menu = ReplyKeyboardMarkup(
         [KeyboardButton(text="💰 Пополнить баланс"), KeyboardButton(text="📦 Мои заказы")],
         [KeyboardButton(text="📞 Поддержка")]
     ],
+    elif message.text == "🔙 Назад":
+    await message.answer(
+        "🏠 Главное меню",
+        reply_markup=menu
+    )
     resize_keyboard=True
 )
 
