@@ -8,7 +8,14 @@ TOKEN = os.getenv("BOT_TOKEN")
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
-
+services = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text="📱 Telegram"), KeyboardButton(text="📸 Instagram")],
+        [KeyboardButton(text="🎵 TikTok"), KeyboardButton(text="▶️ YouTube")],
+        [KeyboardButton(text="🔙 Назад")]
+    ],
+    resize_keyboard=True
+)
 menu = ReplyKeyboardMarkup(
     keyboard=[
         [KeyboardButton(text="🛒 Заказать"), KeyboardButton(text="👤 Профиль")],
@@ -34,10 +41,10 @@ async def buttons(message: Message):
 
     elif message.text == "🛒 Заказать":
         await message.answer("🚀 Скоро здесь появится выбор услуг.")
-
-    elif message.text == "💰 Пополнить баланс":
+elif message.text == "💰 Пополнить баланс":
         await message.answer("💳 Скоро здесь будет пополнение баланса.")
 
+    
     elif message.text == "📦 Мои заказы":
         await message.answer("📦 У вас пока нет заказов.")
 
