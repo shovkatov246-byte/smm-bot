@@ -32,16 +32,41 @@ services = ReplyKeyboardMarkup(
 @dp.message(CommandStart())
 async def start(message: Message):
     await message.answer(
-        "🚀 Добро пожаловать в SMM Bot!\n\nВыберите нужный раздел:",
-        reply_markup=menu
+        f"""🚀 <b>Добро пожаловать в SMM BOT!</b>
+
+━━━━━━━━━━━━━━━━
+
+👋 Здравствуйте, <b>{message.from_user.first_name}</b>!
+
+💎 Быстрое выполнение
+⚡ Высокое качество
+🛡 Безопасные услуги
+
+👇 Выберите нужный раздел:""",
+        reply_markup=menu,
+        parse_mode="HTML"
     )
 
 @dp.message()
 async def buttons(message: Message):
     if message.text == "👤 Профиль":
-        await message.answer(
-            f"👤 Ваш профиль\n\n🆔 ID: {message.from_user.id}\n💰 Баланс: 0 ₽"
-        )
+    await message.answer(
+        f"""👤 <b>Ваш профиль</b>
+
+━━━━━━━━━━━━━━━━
+
+🆔 ID: <code>{message.from_user.id}</code>
+
+💰 Баланс: <b>0 сум</b>
+
+📦 Заказов: <b>0</b>
+
+━━━━━━━━━━━━━━━━
+
+❤️ Спасибо, что пользуетесь нашим сервисом!
+""",
+        parse_mode="HTML"
+    )
 
     elif message.text == "🛒 Заказать":
         await message.answer(
